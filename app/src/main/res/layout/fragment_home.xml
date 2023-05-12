@@ -8,9 +8,63 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello home fragment" />
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnanak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="59dp"
+            android:text="Spesialis Anak"
+            app:icon="@drawable/baseline_science_24"
+            app:layout_constraintBottom_toTopOf="@+id/btnObat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnDokterUmum"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnDokterUmum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="56dp"
+            android:text="Dokter Umum"
+            app:icon="@drawable/baseline_school_24"
+            app:layout_constraintBottom_toTopOf="@+id/btnHT"
+            app:layout_constraintEnd_toStartOf="@+id/btnanak"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnHT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="56dp"
+            android:text="Dokter THT"
+            app:icon="@drawable/baseline_soap_24"
+            app:layout_constraintEnd_toStartOf="@+id/btnObat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnDokterUmum" />
+
+        <Button
+            android:id="@+id/btnObat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="73dp"
+            android:layout_marginTop="59dp"
+            android:layout_marginEnd="56dp"
+            android:text="Obat"
+            app:icon="@drawable/baseline_auto_awesome_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnHT"
+            app:layout_constraintTop_toBottomOf="@+id/btnanak" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

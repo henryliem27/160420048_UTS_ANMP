@@ -8,7 +8,14 @@
         android:id="@+id/itemHome"
         android:name="com.example.a160420048_uts_anmp.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_DokterUmum"
+            app:destination="@id/doctorCategoryListFragment" />
+        <action
+            android:id="@+id/action_ObatListFragment"
+            app:destination="@id/ObatListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemTransaction"
         android:name="com.example.a160420048_uts_anmp.view.DoctorListFragment"
@@ -31,6 +38,47 @@
         <action
             android:id="@+id/actionDoctorDetailFragment"
             app:destination="@id/itemTransaction" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorCategoryListFragment"
+        android:name="com.example.a160420048_uts_anmp.view.DoctorCategoryListFragment"
+        android:label="fragment_doctor_category_list"
+        tools:layout="@layout/fragment_doctor_category_list" >
+        <argument
+            android:name="kategori"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_doctorCategoryListFragment_to_itemHome"
+            app:destination="@id/itemHome" />
+        <action
+            android:id="@+id/actionItemTransaction"
+            app:destination="@id/doctorDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemOthers"
+        android:name="com.example.a160420048_uts_anmp.view.OtherFragment"
+        android:label="fragment_other"
+        tools:layout="@layout/fragment_other" />
+    <fragment
+        android:id="@+id/ObatListFragment"
+        android:name="com.example.a160420048_uts_anmp.view.obatListFragment"
+        android:label="fragment_obat_list"
+        tools:layout="@layout/fragment_obat_list" >
+        <action
+            android:id="@+id/actionObatDetailFragment"
+            app:destination="@id/obatDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/obatDetailFragment"
+        android:name="com.example.a160420048_uts_anmp.view.ObatDetailFragment"
+        android:label="fragment_obat_detail"
+        tools:layout="@layout/fragment_obat_detail" >
+        <action
+            android:id="@+id/action_obatDetailFragment_to_ObatListFragment"
+            app:destination="@id/ObatListFragment" />
         <argument
             android:name="id"
             app:argType="string" />

@@ -12,8 +12,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a160420048_uts_anmp.R
 import com.example.a160420048_uts_anmp.model.Doctor
-import com.example.advweek4.util.loadImage
-
+import com.example.a160420048_uts_anmp.util.loadImage
 class DoctorListAdapter(private val doctorList:ArrayList<Doctor>)
     :RecyclerView.Adapter<DoctorListAdapter.DoctorViewHolder>(){
     class DoctorViewHolder(var view:View):RecyclerView.ViewHolder(view)
@@ -42,6 +41,7 @@ class DoctorListAdapter(private val doctorList:ArrayList<Doctor>)
             val action = DoctorListFragmentDirections.actionItemTransaction(id)
             Navigation.findNavController(it).navigate(action)
         }
+
     }
     @SuppressLint("NotifyDataSetChanged")
     fun updateStudentList(newStudentList: ArrayList<Doctor>){
