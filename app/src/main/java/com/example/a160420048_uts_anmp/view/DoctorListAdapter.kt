@@ -24,22 +24,18 @@ class DoctorListAdapter(private val doctorList:ArrayList<Doctor>)
     }
 
     override fun getItemCount(): Int = doctorList.size
-
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: DoctorViewHolder, position: Int) {
         val imageView = holder.view.findViewById<ImageView>(R.id.imgDoctor)
         val progressBar = holder.view.findViewById<ProgressBar>(R.id.progressBarDoctorList)
         holder.view.findViewById<TextView>(R.id.txtID).text = doctorList[position].profesi
         holder.view.findViewById<TextView>(R.id.txtName).text = doctorList[position].name
-        holder.view.findViewById<Button>(R.id.btnlamakerja).text = doctorList[position].years+" tahun"
-        holder.view.findViewById<Button>(R.id.btnrate).text = doctorList[position].rating+" %"
+        holder.view.findViewById<Button>(R.id.btnlamakerja).text = doctorList[position].years.toString()+" tahun"
+        holder.view.findViewById<Button>(R.id.btnrate).text = doctorList[position].rating.toString()+" %"
         imageView.loadImage(doctorList[position].photoUrl,progressBar)
 //        Picasso.get().load(doctorList[position].photoUrl).into(holder.findViewById<ImageView>(R.id.imgDoctor))
 
         holder.view.findViewById<Button>(R.id.btnDetail).setOnClickListener {
-            val id = doctorList[position].id.toString()
-            val action = DoctorListFragmentDirections.actionItemTransaction(id)
-            Navigation.findNavController(it).navigate(action)
+            val id = doctorList[position].doctor_id.toString()
         }
 
     }

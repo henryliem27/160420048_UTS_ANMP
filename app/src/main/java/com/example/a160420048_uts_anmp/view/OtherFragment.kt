@@ -19,7 +19,7 @@ class OtherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val btnSettings = view?.findViewById<Button>(R.id.btnPengaturan)
+        val btnSettings = view.findViewById<Button>(R.id.btnPengaturan)
         btnSettings?.setOnClickListener {
 
         }

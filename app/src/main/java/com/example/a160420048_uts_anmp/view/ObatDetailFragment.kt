@@ -40,7 +40,7 @@ class ObatDetailFragment : Fragment() {
         if (arguments != null) {
             val id = ObatDetailFragmentArgs.fromBundle(requireArguments()).id
             viewModel = ViewModelProvider(this)[ListViewModel::class.java]
-            viewModel.obatdetail(id)
+//            viewModel.obatdetail(id)
             observeDetailViewModel()
         }
     }

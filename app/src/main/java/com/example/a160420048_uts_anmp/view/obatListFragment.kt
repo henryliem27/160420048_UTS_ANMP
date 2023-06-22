@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.a160420048_uts_anmp.R
+import com.example.a160420048_uts_anmp.model.Obat
 import com.example.a160420048_uts_anmp.viewmodel.ListViewModel
 
 class obatListFragment : Fragment() {
@@ -35,7 +36,7 @@ class obatListFragment : Fragment() {
         val refreshLayout: SwipeRefreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.SwipeRefreshLayout)
 
         viewModel= ViewModelProvider(this)[ListViewModel::class.java]
-        viewModel.obat()
+//        viewModel.obat()
         recView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
         recView.adapter = doctorListAdapter
 
@@ -43,14 +44,15 @@ class obatListFragment : Fragment() {
             recView.visibility = View.GONE
             txtError.visibility = View.GONE
             progressLoad.visibility = View.VISIBLE
-            viewModel.obat()
+//            viewModel.obat()
             refreshLayout.isRefreshing = false
         }
         observeViewModel(recView,txtError,progressLoad)
     }
     fun observeViewModel(recView:RecyclerView,txtError:TextView,progressLoad:View){
         viewModel.obatsLD.observe(viewLifecycleOwner, Observer {
-            doctorListAdapter.updateObatList(it)
+            val arrayList = ArrayList<Obat>(it)
+            doctorListAdapter.updateObatList(arrayList)
         })
         viewModel.doctorsLoadErrorLD.observe(viewLifecycleOwner, Observer {
             if(it == true) {

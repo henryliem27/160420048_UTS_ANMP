@@ -32,7 +32,7 @@ class ProfileFragment : Fragment() {
         if(arguments!= null){
             val id =  DoctorDetailFragmentArgs.fromBundle(requireArguments()).id
             viewModel = ViewModelProvider(this)[ListViewModel::class.java]
-            viewModel.login(id, password = "")
+//            viewModel.login(id, password = "1134215")
             observeDetailViewModel()
         }
     }

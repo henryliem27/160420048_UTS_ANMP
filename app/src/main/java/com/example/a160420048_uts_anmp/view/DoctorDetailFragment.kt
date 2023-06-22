@@ -34,8 +34,8 @@ class DoctorDetailFragment : Fragment() {
         if (arguments != null) {
             val id = DoctorDetailFragmentArgs.fromBundle(requireArguments()).id
             viewModel = ViewModelProvider(this)[ListViewModel::class.java]
-            viewModel.detail(id)
-            viewModel.jadwal(id)
+//            viewModel.detail(id)
+//            viewModel.jadwal(id)
             observeDetailViewModel()
         }
     }
@@ -61,8 +61,8 @@ class DoctorDetailFragment : Fragment() {
             alumnus?.text = "Alumnus: \n" + it.alumnus
             pratikdi?.text = "Pratik di: \n" + it.pratik_di
             nomorstr?.text = "Nomor STR: \n" + it.nomorstr
-            lamakerja?.text = it.years + " tahun"
-            rate?.text = it.rating + " %"
+            lamakerja?.text = it.years.toString() + " tahun"
+            rate?.text = it.rating.toString() + " %"
             val doctor = it
             val btnBook = view?.findViewById<Button>(R.id.btnBook)
             btnBook?.setOnClickListener {

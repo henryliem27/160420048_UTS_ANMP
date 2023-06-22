@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.a160420048_uts_anmp.R
+import com.example.a160420048_uts_anmp.model.Doctor
 import com.example.a160420048_uts_anmp.viewmodel.ListViewModel
 
 class DoctorCategoryListFragment : Fragment() {
@@ -28,7 +29,7 @@ class DoctorCategoryListFragment : Fragment() {
         if(arguments!= null){
             val kategori =  DoctorCategoryListFragmentArgs.fromBundle(requireArguments()).kategori
             viewModel = ViewModelProvider(this)[ListViewModel::class.java]
-            viewModel.kategori(kategori)
+//            viewModel.kategori(kategori)
         }
 
         recView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
@@ -39,7 +40,7 @@ class DoctorCategoryListFragment : Fragment() {
             recView.visibility = View.GONE
             txtError.visibility = View.GONE
             progressLoad.visibility = View.VISIBLE
-            viewModel.kategori(kategori)
+//            viewModel.kategori(kategori)
             refreshLayout.isRefreshing = false
         }
 
@@ -55,7 +56,8 @@ class DoctorCategoryListFragment : Fragment() {
 
     fun observeViewModel(recView:RecyclerView,txtError:TextView,progressLoad:View){
         viewModel.doctorsLD.observe(viewLifecycleOwner, Observer {
-            doctorListAdapter.updateStudentList(it)
+            val arrayList = ArrayList<Doctor>(it)
+            doctorListAdapter.updateStudentList(arrayList)
         })
         viewModel.doctorsLoadErrorLD.observe(viewLifecycleOwner, Observer {
             if(it == true) {

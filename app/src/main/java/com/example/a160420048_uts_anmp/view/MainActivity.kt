@@ -11,27 +11,44 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
+import androidx.room.Room
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.a160420048_uts_anmp.R
+import com.example.a160420048_uts_anmp.model.Doctor
+import com.example.a160420048_uts_anmp.model.DoctorDatabase
+import com.example.a160420048_uts_anmp.model.UTSDao
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.a160420048_uts_anmp.util.createNotificationChannel
+import com.google.android.material.navigation.NavigationView
+import kotlinx.coroutines.launch
 
 
-@Suppress("CAST_NEVER_SUCCEEDS")
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var utsDao: UTSDao
     @SuppressLint("MissingInflatedId")
     private val fragments:ArrayList<Fragment> =ArrayList()
     init {
         instance = this
     }
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.drawer_layout)
+        setContentView(R.layout.activity_main)
+
+//        val db = Room.databaseBuilder(
+//            applicationContext,
+//            DoctorDatabase::class.java, "my-database"
+//        ).build()
+//        lifecycleScope.launch {
+//            db.utsDao().selectDoctor(1)
+//        }
 
         createNotificationChannel(this, NotificationManagerCompat.IMPORTANCE_DEFAULT, false,
             getString(R.string.app_name), "App Notification Channel")
@@ -39,26 +56,28 @@ class MainActivity : AppCompatActivity() {
         val bottomNav:BottomNavigationView = findViewById(R.id.bottomNav)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.hostFragment) as NavHostFragment
         navController = navHostFragment.navController
-
-        bottomNav.setupWithNavController(navController)
-
-        //navigation drawer
+        NavigationUI.setupWithNavController(bottomNav,navController)
+        //toolbar
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        val drawerLayout = findViewById<View>(R.id.drawerLayout)
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        //navigation drawer
+        val drawerLayout = findViewById<View>(R.id.drawerLayout1)
         var drawerToggle =
             ActionBarDrawerToggle(this, drawerLayout as DrawerLayout?, toolbar,R.string.app_name,
                 R.string.app_name)
         drawerToggle.isDrawerIndicatorEnabled = true
         drawerToggle.syncState()
 
+        val navView = findViewById<NavigationView>(R.id.navView)
+        NavigationUI.setupWithNavController(navView,navController)
 
 
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(navController,null)
+        return NavigationUI.navigateUp(navController,drawerLayout)
+                || super.onSupportNavigateUp()
     }
 
     companion object {
