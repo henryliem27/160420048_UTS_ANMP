@@ -1,162 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.DoctorDetailFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
+    <data>
+        <variable
+            name="doctor"
+            type="com.example.a160420048_uts_anmp.model.Doctor" />
+        <variable
+            name="jadwal"
+            type="com.example.a160420048_uts_anmp.model.Jadwal" />
+        <variable
+            name="bookListener"
+            type="com.example.a160420048_uts_anmp.view.DetailDoctorClick" />
+    </data>
 
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".view.DoctorDetailFragment">
 
-        <LinearLayout
+        <!-- TODO: Update blank fragment layout -->
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/txtJadwal1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="8dp"
-                    android:text="TextView"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtNomorSTR" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/txtNomorSTR"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="24dp"
-                    android:scrollbarTrackVertical="@drawable/baseline_school_24"
-                    android:text="Nomor Str:"
-                    android:textColor="@color/material_dynamic_neutral20"
-                    android:textSize="34sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtPraktikDi" />
+                    <TextView
+                        android:id="@+id/txtJadwal1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@{`Next Free Appointment \nLokasi:`+jadwal.lokasi+ `\nTanggal: `+ jadwal.tanggal +` Jam: `+ jadwal.waktu}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtNomorSTR" />
 
-                <TextView
-                    android:id="@+id/txtPraktikDi"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="24dp"
-                    android:scrollbarTrackVertical="@drawable/baseline_school_24"
-                    android:text="Praktik di"
-                    android:textColor="@color/material_dynamic_neutral20"
-                    android:textSize="34sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtAlumnus" />
+                    <TextView
+                        android:id="@+id/txtNomorSTR"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="24dp"
+                        android:scrollbarTrackVertical="@drawable/baseline_school_24"
+                        android:text="@{`Nomor Str: \n`+doctor.nomorstr}"
+                        android:textColor="@color/material_dynamic_neutral20"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtPraktikDi" />
 
-                <ProgressBar
-                    android:id="@+id/progressBardetaildoctor"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/imgDoctor1"
-                    app:layout_constraintEnd_toEndOf="@+id/imgDoctor1"
-                    app:layout_constraintStart_toStartOf="@+id/imgDoctor1"
-                    app:layout_constraintTop_toTopOf="@+id/imgDoctor1" />
+                    <TextView
+                        android:id="@+id/txtPraktikDi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="24dp"
+                        android:scrollbarTrackVertical="@drawable/baseline_school_24"
+                        android:text="@{`Pratik di: \n`+doctor.pratik_di}"
+                        android:textColor="@color/material_dynamic_neutral20"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtAlumnus" />
 
-                <TextView
-                    android:id="@+id/txtAlumnus"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="24dp"
-                    android:scrollbarTrackVertical="@drawable/baseline_school_24"
-                    android:text="Alumnus"
-                    android:textColor="@color/material_dynamic_neutral20"
-                    android:textSize="34sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnlamakerja2" />
+                    <ProgressBar
+                        android:id="@+id/progressBardetaildoctor"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgDoctor1"
+                        app:layout_constraintEnd_toEndOf="@+id/imgDoctor1"
+                        app:layout_constraintStart_toStartOf="@+id/imgDoctor1"
+                        app:layout_constraintTop_toTopOf="@+id/imgDoctor1" />
 
-                <Button
-                    android:id="@+id/btnrate2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:enabled="false"
-                    android:text="100%"
-                    app:icon="@drawable/baseline_thumb_up_24"
-                    app:layout_constraintStart_toEndOf="@+id/btnlamakerja2"
-                    app:layout_constraintTop_toBottomOf="@+id/txtProfesi" />
+                    <TextView
+                        android:id="@+id/txtAlumnus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="24dp"
+                        android:scrollbarTrackVertical="@drawable/baseline_school_24"
+                        android:text="@{`Alumnus: \n`+doctor.alumnus}"
+                        android:textColor="@color/material_dynamic_neutral20"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnlamakerja2" />
 
-                <ImageView
-                    android:id="@+id/imgDoctor1"
-                    android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
+                    <Button
+                        android:id="@+id/btnrate2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:enabled="false"
+                        android:text="@{Double.toString(doctor.rating)+`%`}"
+                        android:contentDescription="@string/ini_rating"
+                        app:icon="@drawable/baseline_thumb_up_24"
+                        app:layout_constraintStart_toEndOf="@+id/btnlamakerja2"
+                        app:layout_constraintTop_toBottomOf="@+id/txtProfesi" />
 
-                <TextView
-                    android:id="@+id/txtNama"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:text="TextView"
-                    android:textColor="@color/material_dynamic_neutral20"
-                    android:textSize="48sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imgDoctor1" />
+                    <ImageView
+                        android:id="@+id/imgDoctor1"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@tools:sample/avatars" />
 
-                <TextView
-                    android:id="@+id/txtProfesi"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:text="TextView"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtNama" />
+                    <TextView
+                        android:id="@+id/txtNama"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="@{doctor.name}"
+                        android:textColor="@color/material_dynamic_neutral20"
+                        android:textSize="48sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imgDoctor1" />
 
-                <Button
-                    android:id="@+id/btnlamakerja2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:enabled="false"
-                    android:text="5 tahun"
-                    app:icon="@drawable/baseline_work_24"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtProfesi" />
+                    <TextView
+                        android:id="@+id/txtProfesi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="@{doctor.profesi}"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtNama" />
 
-                <Button
-                    android:id="@+id/btnBook"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="285dp"
-                    android:text="Book"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtJadwal1" />
+                    <Button
+                        android:id="@+id/btnlamakerja2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:enabled="false"
+                        android:text="@{doctor.years+` tahun`}"
+                        android:contentDescription="@string/ini_tahun"
+                        app:icon="@drawable/baseline_work_24"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtProfesi" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-    </ScrollView>
+                    <Button
+                        android:id="@+id/btnBook"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="285dp"
+                        android:text="@string/book"
+                        android:onClick="@{(view)->bookListener.onBookClick(view,doctor)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtJadwal1" />
 
-</FrameLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+</layout>

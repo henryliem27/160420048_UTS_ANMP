@@ -29,7 +29,8 @@ data class Doctor(
 @Entity(tableName = "jadwal")
 data class Jadwal(
     @PrimaryKey(autoGenerate = true)
-    val jadwal_id :Int, val doctor_id:Int, val lokasi:String?, val waktu:String, val tanggal:String?)
+    val jadwal_id :Int,
+    val doctor_id:Int, val lokasi:String?, val waktu:String, val tanggal:String?)
 
 @Entity(tableName = "user")
 data class User(
@@ -39,4 +40,6 @@ data class User(
 @Entity(tableName = "obat")
 data class Obat(
     @PrimaryKey(autoGenerate = true)
-                val obat_id: Int?, val nama:String?, val perbuah:String, val harga:String?, val deskripsi:String, val indikasi_umum:String?, val komposisi:String?, val dosis:String?, val aturan_pakai:String?, val golongan_produk:String?, val kemasan:String?, val manufaktur:String?, val no_regristasi:String?, val photo_url:String?)
+                val obat_id: Int?, val nama:String?, val perbuah:String, val harga:String?, val deskripsi:String,
+    val indikasi_umum:String?, val komposisi:String?, val dosis:String?, val aturan_pakai:String?, val golongan_produk:String?,
+    val kemasan:String?, val manufaktur:String?, val no_regristasi:String?, val photo_url:String?)

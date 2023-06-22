@@ -36,9 +36,6 @@ class ListViewModel(application: Application)
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
 
-    val TAG = "volleyTag"
-    private var queue: RequestQueue? = null
-
     fun refresh(){
         loadingLD.value = true
         doctorsLoadErrorLD.value=false
@@ -58,6 +55,25 @@ class ListViewModel(application: Application)
                 DoctorDatabase::class.java, "anmp_160420048_uts").build()
             db.utsDao().deleteDoctor(doctor)
             doctorsLD.postValue(db.utsDao().selectAllDoctor() as ArrayList<Doctor>?)
+        }
+    }
+
+    fun detail(id:Int){
+        launch {
+            val db = Room.databaseBuilder(
+                getApplication(),
+                DoctorDatabase::class.java, "anmp_160420048_uts").build()
+            db.utsDao().selectDoctor(id)
+            doctorLD.postValue(db.utsDao().selectDoctor(id))
+        }
+    }
+    fun jadwal(id: Int){
+        launch {
+            val db = Room.databaseBuilder(
+                getApplication(),
+                DoctorDatabase::class.java, "anmp_160420048_uts").build()
+            db.utsDao().selectJadwal(id)
+            jadwalLD.postValue(db.utsDao().selectJadwal(id))
         }
     }
     /*

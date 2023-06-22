@@ -56,7 +56,6 @@ class DoctorListFragment : Fragment() {
             val recView: RecyclerView? = view?.findViewById(R.id.recyclerView)
             val progressLoad:View? = view?.findViewById(R.id.progressBar)
             if(it.isEmpty()){
-                txtError?.text = "kosong bro"
                 txtError?.visibility = VISIBLE
                 recView?.visibility = View.GONE
                 progressLoad?.visibility = VISIBLE

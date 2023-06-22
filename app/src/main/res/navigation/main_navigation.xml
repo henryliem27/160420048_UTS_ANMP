@@ -20,7 +20,11 @@
         android:id="@+id/itemTransaction"
         android:name="com.example.a160420048_uts_anmp.view.DoctorListFragment"
         android:label="fragment_doctor_list"
-        tools:layout="@layout/fragment_doctor_list" />
+        tools:layout="@layout/fragment_doctor_list" >
+        <action
+            android:id="@+id/actionDoctorListDoctorDetailFragment"
+            app:destination="@id/doctorDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemProfile"
         android:name="com.example.a160420048_uts_anmp.view.ProfileFragment"
@@ -33,7 +37,7 @@
         tools:layout="@layout/fragment_doctor_detail" >
         <argument
             android:name="id"
-            app:argType="string" />
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/doctorCategoryListFragment"

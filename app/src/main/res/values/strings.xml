@@ -2,4 +2,9 @@
     <string name="app_name">160420048_UTS_ANMP</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="login">Login</string>
+    <string name="kosong_bro">kosong bro</string>
+    <string name="detail">Detail</string>
+    <string name="ini_rating">ini rating</string>
+    <string name="ini_tahun">ini tahun</string>
+    <string name="book">Book</string>
 </resources>
