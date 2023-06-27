@@ -33,7 +33,6 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var drawerLayout: DrawerLayout
-    private lateinit var bundle: Bundle
 
     @SuppressLint("MissingInflatedId")
     private val fragments:ArrayList<Fragment> =ArrayList()
@@ -49,6 +48,7 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.app_name), "App Notification Channel")
 
         val username = intent.getStringExtra(NAME)
+        val bundle = Bundle()
         bundle.putString(NAME,username)
         val bottomNav:BottomNavigationView = findViewById(R.id.bottomNav)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.hostFragment) as NavHostFragment
