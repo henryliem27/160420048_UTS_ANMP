@@ -23,28 +23,5 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        val btnDokterUmum = view.findViewById<Button>(R.id.btnDokterUmum)
-        val btnDokterTHT = view.findViewById<Button>(R.id.btnHT)
-        val btnDokterAnak = view.findViewById<Button>(R.id.btnanak)
-        val btnObat = view.findViewById<Button>(R.id.btnObat)
-        btnDokterUmum.setOnClickListener {
-            val kategori:String = "Dokter Umum"
-
-        }
-
-        btnDokterTHT.setOnClickListener {
-            val kategori:String = "sp.THT"
-
-        }
-
-        btnDokterAnak.setOnClickListener {
-            val kategori:String = "Sp.Anak"
-
-        }
-        btnObat.setOnClickListener {
-
-        }
-
     }
 }

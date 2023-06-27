@@ -33,14 +33,13 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var drawerLayout: DrawerLayout
-    private lateinit var utsDao: UTSDao
     private lateinit var bundle: Bundle
+
     @SuppressLint("MissingInflatedId")
     private val fragments:ArrayList<Fragment> =ArrayList()
     init {
         instance = this
     }
-
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +48,8 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel(this, NotificationManagerCompat.IMPORTANCE_DEFAULT, false,
             getString(R.string.app_name), "App Notification Channel")
 
-
+        val username = intent.getStringExtra(NAME)
+        bundle.putString(NAME,username)
         val bottomNav:BottomNavigationView = findViewById(R.id.bottomNav)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.hostFragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -69,6 +69,9 @@ class MainActivity : AppCompatActivity() {
         val navView = findViewById<NavigationView>(R.id.navView)
         NavigationUI.setupWithNavController(navView,navController)
 
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -77,6 +80,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        const val NAME:String= "randomconst"
         private var instance:MainActivity ?= null
         fun showNotification(title:String, content:String, icon:Int){
 

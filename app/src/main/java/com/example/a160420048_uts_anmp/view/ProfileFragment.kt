@@ -30,15 +30,14 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val username = ProfileFragmentArgs.fromBundle(requireArguments()).username
+        val username = arguments?.getString("randomconst")
         viewModel = ViewModelProvider(this)[ListViewModel::class.java]
         if (username != null) {
-            var tmpArray: List<String> = username.split(" ")
+            val tmpArray: List<String> = username.split(" ")
             viewModel.login(tmpArray[0], tmpArray[1])
         }else{
             val txtError = view.findViewById<TextView>(R.id.txtNamaprofile)
-            var tmpArray: List<String> = username!!.split(" ")
-            txtError.text = "Kosong bro di intent"+tmpArray[0]
+            txtError.text = "Kosong bro di intent"
         }
         observeDetailViewModel()
 

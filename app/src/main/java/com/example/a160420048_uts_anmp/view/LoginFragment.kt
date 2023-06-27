@@ -37,6 +37,7 @@ import com.google.android.material.internal.ContextUtils
 
      override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
          super.onViewCreated(view, savedInstanceState)
+
          dataBinding.user
          dataBinding.loginListener = this
          viewModel = ViewModelProvider(this)[ListViewModel::class.java]
@@ -48,7 +49,6 @@ import com.google.android.material.internal.ContextUtils
          val password = dataBinding.txtPassword.text.toString()
          if(email.isEmpty()){
              dataBinding.textInputLayoutEmail.isErrorEnabled
-
              return onLoginClick(v.rootView)
          }else if (password.isEmpty()){
              dataBinding.textInputLayout2.isErrorEnabled
@@ -58,6 +58,8 @@ import com.google.android.material.internal.ContextUtils
          intent.putExtra(NAME, "$email $password")
          startActivity(intent)
          activity?.finish()
+         val action = LoginFragmentDirections.actionLoginFragmentMainNav()
+         Navigation.findNavController(v).navigate(action)
      }
 
      override fun onRegisterClick(v: View) {

@@ -7,5 +7,10 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.a160420048_uts_anmp.view.LoginFragment"
-        android:label="LoginFragment" />
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/actionLoginFragmentMainNav"
+            app:destination="@id/main_navigation" />
+    </fragment>
+    <include app:graph="@navigation/main_navigation" />
 </navigation>
