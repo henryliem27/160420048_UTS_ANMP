@@ -3,6 +3,7 @@ package com.example.a160420048_uts_anmp.view
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.room.Room
@@ -23,6 +25,7 @@ import com.example.a160420048_uts_anmp.model.DoctorDatabase
 import com.example.a160420048_uts_anmp.model.UTSDao
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.a160420048_uts_anmp.util.createNotificationChannel
+import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.launch
 
@@ -31,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var utsDao: UTSDao
+    private lateinit var bundle: Bundle
     @SuppressLint("MissingInflatedId")
     private val fragments:ArrayList<Fragment> =ArrayList()
     init {
@@ -42,16 +46,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val db = Room.databaseBuilder(
-//            applicationContext,
-//            DoctorDatabase::class.java, "my-database"
-//        ).build()
-//        lifecycleScope.launch {
-//            db.utsDao().selectDoctor(1)
-//        }
-
         createNotificationChannel(this, NotificationManagerCompat.IMPORTANCE_DEFAULT, false,
             getString(R.string.app_name), "App Notification Channel")
+
 
         val bottomNav:BottomNavigationView = findViewById(R.id.bottomNav)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.hostFragment) as NavHostFragment
@@ -71,7 +68,6 @@ class MainActivity : AppCompatActivity() {
 
         val navView = findViewById<NavigationView>(R.id.navView)
         NavigationUI.setupWithNavController(navView,navController)
-
 
     }
 

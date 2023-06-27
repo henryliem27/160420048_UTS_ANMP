@@ -6,14 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.a160420048_uts_anmp.R
 import com.example.a160420048_uts_anmp.databinding.FragmentLoginBinding
+
 import com.example.a160420048_uts_anmp.model.User
 import com.example.a160420048_uts_anmp.viewmodel.ListViewModel
+import com.google.android.material.internal.ContextUtils
 
 
  class LoginFragment : Fragment(), LoginFragmentLayoutInterface {
@@ -41,18 +43,25 @@ import com.example.a160420048_uts_anmp.viewmodel.ListViewModel
          observeViewModel()
      }
 
-     override fun onLoginClick(v: View, obj: User) {
+     override fun onLoginClick(v: View) {
          val email = dataBinding.txtEmail.text.toString()
          val password = dataBinding.txtPassword.text.toString()
-       //add input validation
+         if(email.isEmpty()){
+             dataBinding.textInputLayoutEmail.isErrorEnabled
+
+             return onLoginClick(v.rootView)
+         }else if (password.isEmpty()){
+             dataBinding.textInputLayout2.isErrorEnabled
+             return onLoginClick(v.rootView)
+         }
          val intent = Intent(requireContext(), MainActivity::class.java)
-         intent.putExtra(NAME, loginData)
+         intent.putExtra(NAME, "$email $password")
          startActivity(intent)
-         activity?.fragmentManager?.popBackStack()
+         activity?.finish()
      }
 
-     override fun onRegisterClick(v: View, obj: User) {
-         //TODO("Not yet implemented")
+     override fun onRegisterClick(v: View) {
+         TODO("Not yet implemented")
      }
 
      fun observeViewModel(){

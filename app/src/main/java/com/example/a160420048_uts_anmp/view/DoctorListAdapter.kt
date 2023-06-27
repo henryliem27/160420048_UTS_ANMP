@@ -33,7 +33,7 @@ class DoctorListAdapter(private val doctorList:ArrayList<Doctor>)
         notifyDataSetChanged()
     }
 
-    override fun onDoctorListClick(v: View) {
+    override fun onDoctorDetailClick(v: View) {
         val id = v.tag.toString().toInt()
         val action = DoctorListFragmentDirections.actionDoctorListDoctorDetailFragment(id)
         Navigation.findNavController(v).navigate(action)

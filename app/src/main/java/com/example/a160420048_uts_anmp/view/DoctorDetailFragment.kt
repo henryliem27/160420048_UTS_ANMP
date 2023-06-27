@@ -1,12 +1,10 @@
 package com.example.a160420048_uts_anmp.view
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,7 +13,6 @@ import com.example.a160420048_uts_anmp.R
 import com.example.a160420048_uts_anmp.databinding.FragmentDoctorDetailBinding
 import com.example.a160420048_uts_anmp.model.Doctor
 import com.example.a160420048_uts_anmp.viewmodel.ListViewModel
-import com.example.a160420048_uts_anmp.util.loadImage
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -51,6 +48,9 @@ class DoctorDetailFragment : Fragment(),DetailDoctorClick {
     fun observeDetailViewModel() {
         viewModel.doctorLD.observe(viewLifecycleOwner, Observer {
             dataBinding.doctor = it
+        })
+        viewModel.jadwalLD.observe(viewLifecycleOwner,Observer{
+            dataBinding.jadwal = it
         })
         }
 

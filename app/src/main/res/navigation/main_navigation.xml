@@ -2,8 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_navigation"
-    app:startDestination="@id/itemHome">
+    android:id="@+id/main_navigation">
     <fragment
         android:id="@+id/itemHome"
         android:name="com.example.a160420048_uts_anmp.view.HomeFragment"
@@ -29,7 +28,14 @@
         android:id="@+id/itemProfile"
         android:name="com.example.a160420048_uts_anmp.view.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/doctorDetailFragment"
         android:name="com.example.a160420048_uts_anmp.view.DoctorDetailFragment"
@@ -82,20 +88,5 @@
         <argument
             android:name="id"
             app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.a160420048_uts_anmp.view.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <argument
-            android:name="username"
-            app:argType="string" />
-        <argument
-            android:name="password"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_loginFragment_to_itemProfile"
-            app:destination="@id/itemProfile" />
     </fragment>
 </navigation>

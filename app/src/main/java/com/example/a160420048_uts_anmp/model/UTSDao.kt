@@ -6,7 +6,9 @@ import com.example.a160420048_uts_anmp.model.Jadwal as Jadwal
 
 @Dao
 interface UTSDao {
-    //Doctor Database
+    //DOCTOR DATABASE
+    //DOCTOR DATABASE
+    //DOCTOR DATABASE
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg doctor: Doctor)
 
@@ -19,21 +21,29 @@ interface UTSDao {
     @Delete
     fun deleteDoctor(todo:Doctor)
 
-    //User Database
+    //USER DATABASE
+    //USER DATABASE
+    //USER DATABASE
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(vararg user: User)
 
     @Query("SELECT * FROM user WHERE user.username = :username AND user.password= :password")
     fun loginUser(username:String,password:String):User
 
-    //JadwalDB
+
+
+    //JADWAL DATABASE
+    //JADWAL DATABASE
+    //JADWAL DATABASE
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertJadwal(vararg jadwal: Jadwal)
 
-    @Query("SELECT * FROM jadwal WHERE jadwal.jadwal_id = :id")
+    @Query("SELECT * FROM jadwal WHERE jadwal.doctor_id = :id")
     fun selectJadwal(id:Int): Jadwal
 
-    //ObatDb
+    //OBAT DATABASE
+    //OBAT DATABASE
+    //OBAT DATABASE
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertObat(vararg obat: Obat)
 

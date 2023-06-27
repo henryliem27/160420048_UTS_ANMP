@@ -76,6 +76,13 @@ class ListViewModel(application: Application)
             jadwalLD.postValue(db.utsDao().selectJadwal(id))
         }
     }
+    fun login(username:String, password:String){
+        launch {
+            val db = Room.databaseBuilder(
+                getApplication(),DoctorDatabase::class.java,"anmp_160420048_uts").build()
+            db.utsDao().loginUser(username,password)
+        }
+    }
     /*
     //to add doctors as admin
     fun addDoctors(list: List<Doctor>){

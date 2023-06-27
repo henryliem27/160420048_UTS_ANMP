@@ -3,18 +3,14 @@ package com.example.a160420048_uts_anmp.util
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.media.Image
 import android.os.Build
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
-import androidx.room.Room
 import com.example.a160420048_uts_anmp.R
-import com.example.a160420048_uts_anmp.model.DoctorDatabase
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import java.net.URL
 
 
 val DB_NAME = "anmp_160420048_uts"

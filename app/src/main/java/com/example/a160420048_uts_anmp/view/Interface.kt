@@ -5,12 +5,12 @@ import com.example.a160420048_uts_anmp.model.Doctor
 import com.example.a160420048_uts_anmp.model.User
 
 interface LoginFragmentLayoutInterface{
-    fun onLoginClick(v:View,obj:User)
-    fun onRegisterClick(v:View, obj:User)
+    fun onLoginClick(v:View)
+    fun onRegisterClick(v:View)
 }
 
 interface DoctorListClick{
-    fun onDoctorListClick(v:View)
+    fun onDoctorDetailClick(v:View)
 }
 
 interface DetailDoctorClick{
