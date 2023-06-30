@@ -47,17 +47,19 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel(this, NotificationManagerCompat.IMPORTANCE_DEFAULT, false,
             getString(R.string.app_name), "App Notification Channel")
 
-        val username = intent.getStringExtra(NAME)
-        val bundle = Bundle()
-        bundle.putString(NAME,username)
+//        val username = intent.getStringExtra(NAME)
+//        val bundle = Bundle()
+//        bundle.putString(NAME,username)
+
         val bottomNav:BottomNavigationView = findViewById(R.id.bottomNav)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.hostFragment) as NavHostFragment
         navController = navHostFragment.navController
         NavigationUI.setupWithNavController(bottomNav,navController)
-        //toolbar
+
+        //toolbar button back sudah dicoding tapi tidak muncul
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
         //navigation drawer
         val drawerLayout = findViewById<View>(R.id.drawerLayout1)
         var drawerToggle =
@@ -69,8 +71,6 @@ class MainActivity : AppCompatActivity() {
         val navView = findViewById<NavigationView>(R.id.navView)
         NavigationUI.setupWithNavController(navView,navController)
 
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     }
 

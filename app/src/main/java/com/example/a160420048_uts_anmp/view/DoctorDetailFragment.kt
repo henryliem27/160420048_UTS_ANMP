@@ -13,9 +13,6 @@ import com.example.a160420048_uts_anmp.R
 import com.example.a160420048_uts_anmp.databinding.FragmentDoctorDetailBinding
 import com.example.a160420048_uts_anmp.model.Doctor
 import com.example.a160420048_uts_anmp.viewmodel.ListViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 
@@ -33,7 +30,6 @@ class DoctorDetailFragment : Fragment(),DetailDoctorClick {
     //Attempt to invoke virtual method 'java.lang.String java.lang.Object.toString()' on a null object reference
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         if (arguments != null) {
             val id = DoctorDetailFragmentArgs.fromBundle(requireArguments()).id
             viewModel = ViewModelProvider(this)[ListViewModel::class.java]
@@ -56,14 +52,14 @@ class DoctorDetailFragment : Fragment(),DetailDoctorClick {
 
     override fun onBookClick(v:View,doctor: Doctor) {
         //belum di upgrade ppt week 12
-        Observable.timer(5, TimeUnit.SECONDS).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread()).subscribe {
-                Log.d("Messages", "five seconds")
-                MainActivity.showNotification(
-                    doctor.name.toString(),
-                    "A new notification is created!!!!!!",
-                    R.drawable.baseline_error_24
-                )
-            }
+//        Observable.timer(5, TimeUnit.SECONDS).subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread()).subscribe {
+//                Log.d("Messages", "five seconds")
+//                MainActivity.showNotification(
+//                    doctor.name.toString(),
+//                    "A new notification is created!!!!!!",
+//                    R.drawable.baseline_error_24
+//                )
+//            }
     }
 }

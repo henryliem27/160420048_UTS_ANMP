@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
-import com.android.volley.RequestQueue
 import com.example.a160420048_uts_anmp.model.Doctor
 import com.example.a160420048_uts_anmp.model.DoctorDatabase
 import com.example.a160420048_uts_anmp.model.Jadwal

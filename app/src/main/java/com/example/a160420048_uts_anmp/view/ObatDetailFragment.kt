@@ -15,9 +15,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.a160420048_uts_anmp.R
 import com.example.a160420048_uts_anmp.util.loadImage
 import com.example.a160420048_uts_anmp.viewmodel.ListViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 

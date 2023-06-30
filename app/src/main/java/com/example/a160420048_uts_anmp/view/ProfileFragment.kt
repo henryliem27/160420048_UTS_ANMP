@@ -32,6 +32,8 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val username = arguments?.getString("randomconst")
         viewModel = ViewModelProvider(this)[ListViewModel::class.java]
+        //Error, padahal sudah di bundle lewat MainActivity; MainActivity dapat username dari Login Fragment
+        //java.lang.NullPointerException
         if (username != null) {
             val tmpArray: List<String> = username.split(" ")
             viewModel.login(tmpArray[0], tmpArray[1])

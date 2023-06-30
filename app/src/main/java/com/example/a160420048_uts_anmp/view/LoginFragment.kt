@@ -58,8 +58,6 @@ import com.google.android.material.internal.ContextUtils
          intent.putExtra(NAME, "$email $password")
          startActivity(intent)
          activity?.finish()
-         val action = LoginFragmentDirections.actionLoginFragmentMainNav()
-         Navigation.findNavController(v).navigate(action)
      }
 
      override fun onRegisterClick(v: View) {
